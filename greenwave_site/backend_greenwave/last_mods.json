@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1206141638",
+    "alias": "R2",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "1206141639",
+    "alias": "R3",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "1206141640",
+    "alias": "R2",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "1206141641",
+    "alias": "R1",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "12195038#0",
+    "alias": "R2",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "12195038#1",
+    "alias": "R2",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "232703493#0",
+    "alias": "R3",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "232703493#1",
+    "alias": "R3",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "232703493#2",
+    "alias": "R3",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "470281375",
+    "alias": "R3",
+    "removed": false,
+    "lanes": 1,
+    "originalLanes": 1,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "470281377",
+    "alias": "R1",
+    "removed": false,
+    "lanes": 1,
+    "originalLanes": 1,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "68695128#0",
+    "alias": "R4",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "68695128#1",
+    "alias": "R4",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "68695128#2",
+    "alias": "R4",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "68695128#3",
+    "alias": "R4",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  },
+  {
+    "id": "700832299",
+    "alias": "R1",
+    "removed": false,
+    "lanes": 2,
+    "originalLanes": 2,
+    "segmentEdits": [],
+    "turnRestrictions": null,
+    "trim": null
+  }
+]

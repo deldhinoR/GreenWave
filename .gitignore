@@ -1,0 +1,95 @@
+﻿# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDE
+.vscode/
+.idea/
+*.iml
+
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs / local runtime output
+*.log
+logs/
+*.pid
+
+# Env and secrets
+.env
+.env.*
+*.local
+
+# Node / frontend
+node_modules/
+.npm/
+.pnpm-store/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+
+# Project-specific generated/runtime folders
+runtime_assets/
+
+# Large media/model files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.pt
+camera_tests/scripts/footage/
+okul/
+
+# SUMO / map build artifacts and datasets
+greenwave_site/backend_greenwave/_preview_build/
+greenwave_site/backend_greenwave/osm_sources/
+greenwave_site/backend_greenwave/sumo_exports/
+greenwave_site/backend_greenwave/tmp_plain/
+greenwave_site/backend_greenwave/*.zip
+greenwave_site/dataset/
+
+# Python local data/artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.lscache
+
+.git_backup*/
+**/.git_backup*/

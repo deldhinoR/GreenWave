@@ -1,0 +1,2 @@
+scenario,sumocfg,tl_id,wait_improvement_avg,wait_improvement_std,halting_improvement_avg,halting_improvement_std,throughput_change_avg,throughput_change_std
+test12,C:\Users\DELLPC\OneDrive\Masaüstü\test12\scenario.sumocfg,cluster_110438933_110439127_165357759_165357763,82.13351950338344,2.522990563805682,69.36746516066101,1.8820838301905185,0.0,0.0

@@ -1,0 +1,73 @@
+{
+  "traces": [
+    {
+      "name": "morning_peak_road_1",
+      "road_id": 1,
+      "fps": 8,
+      "road_area": 220000,
+      "frames": [
+        {
+          "t": 0.0,
+          "ground_truth_score": 32,
+          "ground_truth_bucket": "low",
+          "detections": [
+            {
+              "class": "car",
+              "bbox": [100, 200, 180, 260],
+              "bbox_area": 4800,
+              "centroid": [140, 230]
+            },
+            {
+              "class": "truck",
+              "bbox": [220, 190, 340, 280],
+              "bbox_area": 10800,
+              "centroid": [280, 235]
+            }
+          ]
+        },
+        {
+          "t": 0.125,
+          "ground_truth_score": 54,
+          "ground_truth_bucket": "medium",
+          "detections": [
+            {
+              "class": "car",
+              "bbox": [104, 200, 184, 260]
+            },
+            {
+              "class": "truck",
+              "bbox": [220, 192, 342, 282]
+            },
+            {
+              "class": "bus",
+              "bbox": [370, 180, 500, 290]
+            }
+          ]
+        },
+        {
+          "t": 0.25,
+          "ground_truth_score": 78,
+          "ground_truth_bucket": "high",
+          "detections": [
+            {
+              "class": "car",
+              "bbox": [108, 201, 188, 261]
+            },
+            {
+              "class": "truck",
+              "bbox": [223, 194, 344, 284]
+            },
+            {
+              "class": "bus",
+              "bbox": [370, 182, 503, 292]
+            },
+            {
+              "class": "car",
+              "bbox": [520, 200, 590, 255]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "format": "sumo-project-manifest/v1",
+  "createdAt": "2026-05-13T22:10:07.188379+00:00",
+  "cacheKey": "39.92374_32.86195_39.92455_32.86288",
+  "bounds": {
+    "min_lat": 39.923741614982355,
+    "min_lon": 32.86195278167725,
+    "max_lat": 39.92454794803524,
+    "max_lon": 32.862875461578376
+  },
+  "networkSummary": {
+    "totalLinks": 16,
+    "editedLinks": 0,
+    "segmentLaneChanges": 0,
+    "turnRestrictionChanges": 0
+  },
+  "files": {
+    "osmSource": "source.osm.xml",
+    "baseNet": "base.net.xml",
+    "finalNet": "scenario.net.xml",
+    "trips": "scenario.trips.xml",
+    "routes": "scenario.rou.xml",
+    "sumocfg": "scenario.sumocfg"
+  },
+  "modifications": [],
+  "aliases": {}
+}

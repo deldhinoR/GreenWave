@@ -1,0 +1,7 @@
+# Install per module with its own virtual environment:
+# - algorithm_sumo/requirements.txt
+# - camera_tests/requirements.txt
+# - greenwave_site/backend_greenwave/requirements.txt
+#
+# Example:
+#   cd algorithm_sumo && .\.venv\Scripts\activate && pip install -r requirements.txt

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Greenwave | The Living Grid</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Icons -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#0d1c2e",
+            "surface-container-low": "#f1f5eb",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#b14b6f",
+            "on-primary-fixed": "#002204",
+            "on-surface": "#181d17",
+            "on-tertiary-fixed": "#3f001c",
+            "secondary": "#515f74",
+            "error": "#ba1a1a",
+            "error-container": "#ffdad6",
+            "surface": "#f7fbf0",
+            "surface-bright": "#f7fbf0",
+            "on-error-container": "#93000a",
+            "primary-container": "#2e7d32",
+            "surface-variant": "#e0e4da",
+            "on-primary-fixed-variant": "#005312",
+            "outline-variant": "#bfcaba",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#40493d",
+            "primary-fixed": "#a3f69c",
+            "background": "#f7fbf0",
+            "secondary-fixed": "#d5e3fc",
+            "inverse-on-surface": "#eef2e8",
+            "surface-container": "#ebefe5",
+            "tertiary-fixed": "#ffd9e2",
+            "inverse-surface": "#2d322b",
+            "outline": "#707a6c",
+            "surface-container-high": "#e5eadf",
+            "on-primary-container": "#cbffc2",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#923357",
+            "primary-fixed-dim": "#88d982",
+            "secondary-container": "#d5e3fc",
+            "primary": "#0d631b",
+            "on-tertiary-container": "#ffedf0",
+            "surface-tint": "#1b6d24",
+            "on-background": "#181d17",
+            "on-secondary-fixed-variant": "#3a485b",
+            "on-tertiary-fixed-variant": "#7f2448",
+            "surface-dim": "#d7dbd2",
+            "tertiary-fixed-dim": "#ffb1c7",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#57657a",
+            "surface-container-highest": "#e0e4da",
+            "on-error": "#ffffff",
+            "inverse-primary": "#88d982",
+            "secondary-fixed-dim": "#b9c7df"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+  <!-- SideNavBar -->
+  <nav
+    class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#f1f5eb] dark:bg-[#181d17] h-screen w-64 border-none shadow-none transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-50">
+    <div class="px-6 mb-10">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary shadow-lg shadow-primary/20">
+          <span class="material-symbols-outlined">eco</span>
+        </div>
+        <div>
+          <h1 class="font-manrope text-xl font-bold tracking-tight text-[#0d631b] dark:text-[#88d982]">Greenwave</h1>
+          <p class="text-[10px] font-label uppercase tracking-[0.15em] text-outline">The Living Grid</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 flex flex-col gap-1 pr-4">
+      <!-- Active: Dashboard -->
+      <a class="flex items-center gap-4 py-3 px-6 text-[#0d631b] dark:text-[#88d982] font-bold bg-[#e5eadf] dark:bg-[#2e352b] rounded-r-full transition-colors duration-300 font-manrope text-sm tracking-wide"
+        href="#">
+        <span class="material-symbols-outlined">dashboard</span>
+        <span>Dashboard</span>
+      </a>
+      <a class="flex items-center gap-4 py-3 px-6 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide rounded-r-full"
+        href="#">
+        <span class="material-symbols-outlined">receipt_long</span>
+        <span>System Logs</span>
+      </a>
+      <a class="flex items-center gap-4 py-3 px-6 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide rounded-r-full"
+        href="#">
+        <span class="material-symbols-outlined">analytics</span>
+        <span>Analytics</span>
+      </a>
+      <a class="flex items-center gap-4 py-3 px-6 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide rounded-r-full"
+        href="#">
+        <span class="material-symbols-outlined">edit_road</span>
+        <span>Editor</span>
+      </a>
+      <a class="flex items-center gap-4 py-3 px-6 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide rounded-r-full"
+        href="#">
+        <span class="material-symbols-outlined">settings</span>
+        <span>Settings</span>
+      </a>
+    </div>
+    <div class="px-6 pt-6 mt-auto border-t border-outline-variant/10">
+      <div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl shadow-sm">
+        <img alt="System Administrator Avatar" class="w-10 h-10 rounded-full object-cover"
+          data-alt="Professional portrait of a male tech administrator in a modern office environment with soft focus lighting"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD5Jp6A5QyqziBRjvPP5zK8gzpsKFgYILKdJeT_Ruq_GKUtnn5rFA1FY1BZfAysuPeVZQgOckahWKMLniynn0s4lYTKseC-mluLi4Aas3g9o_dJVo3JfHBNI5TdhLN0UM2WUOzsBc0MBsCgnVjoE1su35anBeSlz01PXuPDmn7-W9SmNC8g5nV4v9lV6285V7fxEL6HacDka4E169T1JhhLh0Jhf18hVVfz0bE5D4gp2IivD0r25p8o2xc5CpXqeSRohSXY3n6S0Nt" />
+        <div class="overflow-hidden">
+          <p class="text-xs font-bold truncate">Admin Root</p>
+          <p class="text-[10px] text-outline truncate">Superuser Status</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Canvas -->
+  <main class="ml-64 min-h-screen">
+    <!-- TopAppBar -->
+    <header
+      class="w-full h-16 sticky top-0 z-40 bg-[#f7fbf0]/85 dark:bg-[#181d17]/85 backdrop-blur-md flex items-center justify-between px-8 ml-0 w-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-[0_8px_24px_rgba(24,29,23,0.06)]">
+      <div class="flex items-center gap-6">
+        <div class="relative group">
+          <span
+            class="absolute inset-y-0 left-3 flex items-center text-outline group-focus-within:text-primary transition-colors">
+            <span class="material-symbols-outlined text-[20px]">search</span>
+          </span>
+          <input
+            class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline transition-all"
+            placeholder="Search grid nodes..." type="text" />
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="p-2 text-[#707a6c] dark:text-[#bfcaba] hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button
+          class="p-2 text-[#707a6c] dark:text-[#bfcaba] hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all">
+          <span class="material-symbols-outlined">settings_suggest</span>
+        </button>
+        <div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+        <button
+          class="p-2 text-[#707a6c] dark:text-[#bfcaba] hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all flex items-center gap-2">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="text-sm font-semibold pr-2">Profile</span>
+        </button>
+      </div>
+    </header>
+    <!-- Content Shell -->
+    <div class="p-8 space-y-8 max-w-[1600px] mx-auto">
+      <!-- Page Hero / Metrics Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Metric Card 1 -->
+        <div
+          class="bg-surface-container-lowest p-6 rounded-full shadow-[0_4px_12px_rgba(24,29,23,0.03)] border-b-2 border-transparent hover:border-primary transition-all group">
+          <div class="flex justify-between items-start mb-4">
+            <p class="text-[10px] font-label uppercase tracking-widest text-outline">Avg. Speed</p>
+            <span class="text-primary bg-primary-container/10 px-2 py-1 rounded text-[10px] font-bold">+12%</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline text-3xl font-extrabold text-on-surface">42.8</span>
+            <span class="text-sm font-label text-outline">km/h</span>
+          </div>
+        </div>
+        <!-- Metric Card 2 -->
+        <div
+          class="bg-surface-container-lowest p-6 rounded-full shadow-[0_4px_12px_rgba(24,29,23,0.03)] border-b-2 border-transparent hover:border-tertiary transition-all">
+          <div class="flex justify-between items-start mb-4">
+            <p class="text-[10px] font-label uppercase tracking-widest text-outline">Congestion Index</p>
+            <span class="text-tertiary bg-tertiary-container/10 px-2 py-1 rounded text-[10px] font-bold">Stable</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline text-3xl font-extrabold text-on-surface">1.24</span>
+            <span class="text-sm font-label text-outline">Level</span>
+          </div>
+        </div>
+        <!-- Metric Card 3 -->
+        <div
+          class="bg-surface-container-lowest p-6 rounded-full shadow-[0_4px_12px_rgba(24,29,23,0.03)] border-b-2 border-transparent hover:border-primary transition-all">
+          <div class="flex justify-between items-start mb-4">
+            <p class="text-[10px] font-label uppercase tracking-widest text-outline">Active Sensors</p>
+            <span class="text-primary bg-primary-container/10 px-2 py-1 rounded text-[10px] font-bold">99.8% UP</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline text-3xl font-extrabold text-on-surface">12,402</span>
+            <span class="material-symbols-outlined text-primary text-sm">wifi_tethering</span>
+          </div>
+        </div>
+        <!-- Metric Card 4 -->
+        <div class="bg-primary p-6 rounded-full shadow-lg shadow-primary/10 text-on-primary">
+          <div class="flex justify-between items-start mb-4">
+            <p class="text-[10px] font-label uppercase tracking-widest opacity-80">Carbon Reduction</p>
+            <span class="material-symbols-outlined text-[16px]">leaf_spark</span>
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="font-headline text-3xl font-extrabold">2.4</span>
+            <span class="text-sm font-label opacity-80">Tons / hr</span>
+          </div>
+        </div>
+      </div>
+      <!-- Bento Grid Section -->
+      <div class="grid grid-cols-12 gap-8">
+        <!-- Main Map View -->
+        <div
+          class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl overflow-hidden shadow-xl border border-outline-variant/5 relative min-h-[500px]">
+          <!-- Map Mock Background -->
+          <div
+            class="absolute inset-0 grayscale opacity-40 bg-[url('https://openui.fly.dev/openui/1200x800.svg?text=Interactive+Traffic+Map')]"
+            data-alt="High-detailed grayscale satellite view of a modern metropolitan grid with neon green and orange glowing paths representing traffic flow"
+            data-location="San Francisco" style=""></div>
+          <!-- Overlay: Traffic Flows -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveaspectratio="none">
+            <path d="M100,200 Q300,100 500,250 T900,150" fill="none" opacity="0.6" stroke="#0d631b"
+              stroke-linecap="round" stroke-width="4"></path>
+            <path d="M50,400 Q400,350 800,450" fill="none" opacity="0.6" stroke="#ba1a1a" stroke-linecap="round"
+              stroke-width="4"></path>
+            <path d="M200,50 L250,550" fill="none" opacity="0.6" stroke="#88d982" stroke-linecap="round"
+              stroke-width="4"></path>
+          </svg>
+          <!-- Map UI Elements -->
+          <div class="absolute top-6 left-6 flex flex-col gap-2">
+            <div
+              class="bg-surface-container-lowest/80 backdrop-blur-md p-4 rounded-xl border border-outline-variant/20 shadow-lg max-w-[200px]">
+              <h3 class="text-xs font-bold mb-2 uppercase tracking-tight">Flow Status</h3>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span>
+                    Optimal</span>
+                  <span class="font-bold">64%</span>
+                </div>
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                    Moderate</span>
+                  <span class="font-bold">28%</span>
+                </div>
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-error"></span>
+                    Critical</span>
+                  <span class="font-bold">8%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute bottom-6 right-6 flex gap-2">
+            <button
+              class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center hover:bg-surface-bright transition-colors">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+            <button
+              class="w-10 h-10 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center hover:bg-surface-bright transition-colors">
+              <span class="material-symbols-outlined">remove</span>
+            </button>
+            <button
+              class="px-4 h-10 bg-primary text-on-primary rounded-full shadow-lg flex items-center gap-2 text-xs font-bold">
+              <span class="material-symbols-outlined text-[18px]">layers</span>
+              Layers
+            </button>
+          </div>
+        </div>
+        <!-- Recent Incidents -->
+        <div class="col-span-12 lg:col-span-4 space-y-6">
+          <div
+            class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/5 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="font-headline font-bold text-lg">Recent Incidents</h2>
+              <button class="text-primary text-[10px] font-bold uppercase tracking-widest hover:underline">View
+                All</button>
+            </div>
+            <div class="space-y-4 flex-1">
+              <!-- Incident Item -->
+              <div
+                class="flex gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors group cursor-pointer">
+                <div
+                  class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary relative">
+                  <span class="material-symbols-outlined">emergency_home</span>
+                  <span class="absolute -top-1 -right-1 w-3 h-3 bg-tertiary rounded-full pulse-dot"></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-bold truncate">Stalled Vehicle - North Hwy</p>
+                  <p class="text-xs text-outline mb-2">Reported 4 mins ago</p>
+                  <div class="flex gap-2">
+                    <span
+                      class="text-[9px] bg-surface-container-high px-2 py-0.5 rounded-full font-label uppercase">Lane 2
+                      Blocked</span>
+                    <span
+                      class="text-[9px] bg-tertiary/5 text-tertiary px-2 py-0.5 rounded-full font-label uppercase">High
+                      Priority</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors group cursor-pointer">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">construction</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-bold truncate">Maintenance - Sector 7</p>
+                  <p class="text-xs text-outline mb-2">Scheduled until 18:00</p>
+                  <div class="flex gap-2">
+                    <span class="text-[9px] bg-surface-container-high px-2 py-0.5 rounded-full font-label uppercase">No
+                      Delay</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors group cursor-pointer">
+                <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                  <span class="material-symbols-outlined">minor_crash</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="text-sm font-bold truncate">Fender Bender - City Center</p>
+                  <p class="text-xs text-outline mb-2">Resolving - 12 mins ago</p>
+                  <div class="flex gap-2">
+                    <span
+                      class="text-[9px] bg-surface-container-high px-2 py-0.5 rounded-full font-label uppercase">Resolved</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-outline-variant/10">
+              <div class="bg-primary/5 p-4 rounded-xl">
+                <p class="text-xs font-bold text-primary mb-1">AI Recommendation</p>
+                <p class="text-[11px] text-on-surface-variant leading-relaxed">Consider diverting traffic from North Hwy
+                  to bypass the stalled vehicle via the Eastern Connector.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 24h Traffic Volume Chart -->
+        <div class="col-span-12 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/5">
+          <div class="flex items-center justify-between mb-10">
+            <div>
+              <h2 class="font-headline font-bold text-xl">24-Hour Traffic Volume</h2>
+              <p class="text-sm text-outline">Aggregated throughput across all primary city arteries</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="flex items-center gap-2 text-xs font-label uppercase tracking-widest text-outline">
+                <span class="w-3 h-3 rounded-sm bg-primary"></span> Volume
+              </span>
+              <span class="flex items-center gap-2 text-xs font-label uppercase tracking-widest text-outline">
+                <span class="w-3 h-3 rounded-sm bg-primary-fixed"></span> Baseline
+              </span>
+            </div>
+          </div>
+          <div class="h-64 flex items-end gap-3 px-4">
+            <!-- Chart Bars (Simplified for HTML/Tailwind only) -->
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[20%] relative group">
+              <span
+                class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">12k</span>
+            </div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[15%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[10%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[12%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[25%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[45%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[75%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[90%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[85%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[70%]"></div>
+            <div class="flex-1 bg-primary hover:bg-primary-container transition-colors rounded-t-lg h-[60%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[40%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[30%]"></div>
+            <div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[25%]"></div>
+          </div>
+          <div class="flex justify-between mt-4 px-4 text-[10px] text-outline font-label uppercase tracking-widest">
+            <span>00:00</span>
+            <span>04:00</span>
+            <span>08:00 (Peak)</span>
+            <span>12:00</span>
+            <span>16:00</span>
+            <span>20:00</span>
+            <span>23:59</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Floating Action Button (Contextual for Dashboard) -->
+    <button
+      class="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary-container text-on-primary shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform group">
+      <span class="material-symbols-outlined text-[28px]">add_alert</span>
+      <span
+        class="absolute right-full mr-4 bg-surface-container-lowest text-on-surface px-4 py-2 rounded-xl text-sm font-bold shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Deploy
+        Emergency Pulse</span>
+    </button>
+  </main>
+</body>
+
+</html>

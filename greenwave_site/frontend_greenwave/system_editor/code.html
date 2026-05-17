@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greenwave | Signal Editor</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#0d1c2e",
+                    "surface-container-low": "#f1f5eb",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#b14b6f",
+                    "on-primary-fixed": "#002204",
+                    "on-surface": "#181d17",
+                    "on-tertiary-fixed": "#3f001c",
+                    "secondary": "#515f74",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7fbf0",
+                    "surface-bright": "#f7fbf0",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#2e7d32",
+                    "surface-variant": "#e0e4da",
+                    "on-primary-fixed-variant": "#005312",
+                    "outline-variant": "#bfcaba",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#40493d",
+                    "primary-fixed": "#a3f69c",
+                    "background": "#f7fbf0",
+                    "secondary-fixed": "#d5e3fc",
+                    "inverse-on-surface": "#eef2e8",
+                    "surface-container": "#ebefe5",
+                    "tertiary-fixed": "#ffd9e2",
+                    "inverse-surface": "#2d322b",
+                    "outline": "#707a6c",
+                    "surface-container-high": "#e5eadf",
+                    "on-primary-container": "#cbffc2",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#923357",
+                    "primary-fixed-dim": "#88d982",
+                    "secondary-container": "#d5e3fc",
+                    "primary": "#0d631b",
+                    "on-tertiary-container": "#ffedf0",
+                    "surface-tint": "#1b6d24",
+                    "on-background": "#181d17",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "on-tertiary-fixed-variant": "#7f2448",
+                    "surface-dim": "#d7dbd2",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#57657a",
+                    "surface-container-highest": "#e0e4da",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#88d982",
+                    "secondary-fixed-dim": "#b9c7df"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#f1f5eb] dark:bg-[#181d17] h-screen w-64 border-r-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<h1 class="font-manrope text-xl font-bold tracking-tight text-[#0d631b] dark:text-[#88d982]">Greenwave</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-outline font-bold">The Living Grid</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm tracking-wide font-medium text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm tracking-wide font-medium text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span>System Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm tracking-wide font-medium text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Analytics</span>
+</a>
+<!-- Active Tab: Editor -->
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm tracking-wide font-bold text-[#0d631b] dark:text-[#88d982] bg-[#e5eadf] dark:bg-[#2e352b] rounded-r-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]" href="#">
+<span class="material-symbols-outlined" data-icon="edit_road">edit_road</span>
+<span>Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 font-manrope text-sm tracking-wide font-medium text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 bg-surface-container-high rounded-full flex items-center gap-3">
+<img alt="System Administrator Avatar" class="w-8 h-8 rounded-full object-cover" data-alt="Professional headshot of a mature male system administrator with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE9Ay2mKoSSHOpEmkbNE6KE7yHBSCL64VOrs1wJeMXC-jupAIclaQeogNCHUxXTPY5kHDFHP1LN6R4gO7_XfYG-99TwtznYu6YVxsxA9Fle7U1nNnnc1dsid2Wz606q9nojQpwvo-6JqpGQNSdF4iOQ98HJmdgiI7eyvTpIKWA7_HRDoT1MyacAgJAtME84x8-ciz4JGPgZABnQEtvTUF8O_a6eBm_xhQj-7gwI2v2wgquV54WbdcSXuZ-Wv0MpVGAdQk0qWwgdmRR"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Admin User</p>
+<p class="text-[10px] text-outline truncate">Senior Controller</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-8 ml-64 w-[calc(100%-16rem)] h-16 sticky top-0 z-50 bg-[#f7fbf0]/85 dark:bg-[#181d17]/85 backdrop-blur-md shadow-[0_8px_24px_rgba(24,29,23,0.06)] transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline" placeholder="Search intersections..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-[#707a6c] dark:text-[#bfcaba] hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#707a6c] dark:text-[#bfcaba] hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/30 mx-2"></div>
+<button class="flex items-center gap-2 pl-2 pr-1 py-1 hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all">
+<span class="text-sm font-semibold font-manrope text-[#0d631b] dark:text-[#88d982]">System Status: Optimal</span>
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(13,99,27,0.5)]"></div>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 p-8 min-h-[calc(100vh-4rem)]">
+<div class="flex gap-8 h-full">
+<!-- Left Sidebar: Intersection List -->
+<div class="w-80 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h2 class="headline-SM font-headline text-lg font-bold text-on-surface">Intersections</h2>
+<span class="label-MD text-[10px] tracking-wider text-outline bg-surface-container-high px-2 py-1 rounded">24 ACTIVE</span>
+</div>
+<div class="space-y-3 overflow-y-auto max-h-[calc(100vh-12rem)] pr-2">
+<!-- Intersection Cards -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm cursor-pointer border-l-4 border-primary transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-sm">Broadway &amp; 42nd St</h3>
+<span class="text-[10px] font-bold text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span> SYNCED
+                            </span>
+</div>
+<p class="text-xs text-on-surface-variant mb-3">District: Mid-Town Hub</p>
+<div class="flex gap-2">
+<span class="text-[9px] px-2 py-0.5 rounded-full bg-surface-container-low text-outline">HIGH FLOW</span>
+<span class="text-[9px] px-2 py-0.5 rounded-full bg-surface-container-low text-outline">4-WAY</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-sm">5th Ave &amp; East 23rd</h3>
+<span class="text-[10px] font-bold text-outline">IDLE</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-3">District: Flatiron District</p>
+<div class="flex gap-2">
+<span class="text-[9px] px-2 py-0.5 rounded-full bg-surface-container-highest text-outline">MED FLOW</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-sm">Madison &amp; 57th St</h3>
+<span class="text-[10px] font-bold text-tertiary">ALERT</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-3">District: Plaza District</p>
+<div class="flex gap-2">
+<span class="text-[9px] px-2 py-0.5 rounded-full bg-surface-container-highest text-outline">CONGESTION</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-sm">Park Ave &amp; 47th St</h3>
+<span class="text-[10px] font-bold text-outline">IDLE</span>
+</div>
+<p class="text-xs text-on-surface-variant mb-3">District: Grand Central</p>
+</div>
+</div>
+</div>
+<!-- Editor Main Canvas -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Editor Header -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-6 rounded-full shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="traffic">traffic</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-xl">Broadway &amp; 42nd St <span class="text-outline font-medium text-sm ml-2">#INT-4092</span></h2>
+<p class="text-sm text-outline">Active Sequence: <span class="text-primary-container font-semibold">Adaptive Rush Hour v4.2</span></p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2 rounded-full font-manrope font-bold text-sm bg-surface-container-highest text-on-surface hover:bg-surface-dim transition-all">
+                            Reset Sequence
+                        </button>
+<button class="px-8 py-2 rounded-full font-manrope font-bold text-sm bg-gradient-to-br from-primary to-primary-container text-white shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+                            Deploy Changes
+                        </button>
+</div>
+</div>
+<!-- Editor Workspace: Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6 flex-1">
+<!-- Live Preview (Map/Visual) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-full overflow-hidden relative shadow-md min-h-[400px]">
+<div class="absolute inset-0 bg-slate-200">
+<img class="w-full h-full object-cover opacity-60" data-alt="Birds eye view map of a major city intersection with stylized traffic lanes and green digital overlays representing vehicle flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeC6qEZ3v7jbuD76Y5JwCezVgSKUgkG6CdKh7tWp5VMfHDtATdzyShCxpSUNscgWqtm3WnDEYvOaXW5inTcd6yA62LmVlIWkteZSkQOriXV7rolGTXHCzvnC3CRr-VeoxIM4OPSz54F60SwkuasMniCuKZI_U2XpMtAEWWt_tczGo642-cBULxnEiuPudyWH_pJthLZans_dvHKjXOZn3H2NKXTnTl6io3cvitywWSdJ0yupFdrQ5lZBqhhkKG2vy9lGCP0Aoz-8uQ"/>
+<!-- Overlay Map UI -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<!-- Stylized Intersection Nodes -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-4 border-white/40 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/10">
+<div class="relative w-full h-full">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+<div class="w-3 h-8 bg-primary rounded-full shadow-[0_0_12px_#0d631b]"></div>
+<span class="text-[10px] font-bold text-white mt-1 drop-shadow-md">NORTH</span>
+</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+<div class="w-3 h-8 bg-tertiary rounded-full"></div>
+<span class="text-[10px] font-bold text-white mt-1 drop-shadow-md">SOUTH</span>
+</div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
+<span class="text-[10px] font-bold text-white mr-1 drop-shadow-md">WEST</span>
+<div class="h-3 w-8 bg-amber-400 rounded-full"></div>
+</div>
+<div class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center">
+<div class="h-3 w-8 bg-tertiary rounded-full"></div>
+<span class="text-[10px] font-bold text-white ml-1 drop-shadow-md">EAST</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur px-4 py-2 rounded-full border border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="videocam">videocam</span>
+<span class="text-[11px] font-bold tracking-wider">LIVE TELEMETRY FEED</span>
+</div>
+<div class="absolute bottom-4 right-4 flex gap-2">
+<button class="p-2 bg-white rounded-full shadow-lg text-outline"><span class="material-symbols-outlined">zoom_in</span></button>
+<button class="p-2 bg-white rounded-full shadow-lg text-outline"><span class="material-symbols-outlined">zoom_out</span></button>
+<button class="p-2 bg-white rounded-full shadow-lg text-outline"><span class="material-symbols-outlined">layers</span></button>
+</div>
+</div>
+<!-- Sequence Controls (Node-based feel) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Timing Editor -->
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-sm flex-1">
+<h3 class="font-headline font-bold text-sm mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="timer">timer</span>
+                                Timing Parameters
+                            </h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span class="text-outline">GREEN DURATION (NS)</span>
+<span class="text-primary">45s</span>
+</div>
+<div class="h-1.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span class="text-outline">YELLOW CLEARANCE</span>
+<span class="text-amber-500">5s</span>
+</div>
+<div class="h-1.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 w-[25%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span class="text-outline">RED BUFFER</span>
+<span class="text-tertiary">3s</span>
+</div>
+<div class="h-1.5 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[15%] rounded-full"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/10">
+<label class="block text-[10px] font-bold text-outline tracking-widest mb-3 uppercase">Trigger Logic</label>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<span class="text-xs font-medium">Pedestrian Call</span>
+<div class="w-8 h-4 bg-primary rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<span class="text-xs font-medium">Emergency Preemption</span>
+<div class="w-8 h-4 bg-outline-variant rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="bg-primary text-white p-6 rounded-full shadow-lg shadow-primary/20">
+<h3 class="font-headline font-bold text-sm mb-4">Traffic Optimization</h3>
+<p class="text-xs text-primary-fixed opacity-90 mb-6">AI-Suggested sequence based on current vehicle queue of 124 cars.</p>
+<button class="w-full bg-white text-primary py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-primary-fixed transition-colors">
+                                Apply AI Suggestion
+                            </button>
+</div>
+</div>
+<!-- Cycle Preview (Bottom Row) -->
+<div class="col-span-12 bg-surface-container-lowest p-6 rounded-full shadow-sm">
+<div class="flex items-center gap-8">
+<div class="shrink-0">
+<h3 class="font-headline font-bold text-sm">Sequence Timeline</h3>
+<p class="text-[10px] text-outline">120s Full Cycle</p>
+</div>
+<div class="flex-1 h-12 bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary flex items-center justify-center text-[10px] font-bold text-white" style="width: 45%;">NORTH-SOUTH GREEN</div>
+<div class="h-full bg-amber-400 flex items-center justify-center text-[10px] font-bold text-white" style="width: 5%;">NS YELLOW</div>
+<div class="h-full bg-tertiary flex items-center justify-center text-[10px] font-bold text-white" style="width: 40%;">EAST-WEST GREEN</div>
+<div class="h-full bg-amber-400 flex items-center justify-center text-[10px] font-bold text-white" style="width: 5%;">EW YELLOW</div>
+<div class="h-full bg-tertiary-container flex items-center justify-center text-[10px] font-bold text-white" style="width: 5%;">ALL RED</div>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="play_circle">play_circle</span>
+<span class="text-xs font-bold">Previewing...</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,19 @@
+***Starting server on port 64531 ***
+Loading net-file from 'simulation\coldwater.net.xml' ... done (3ms).
+Loading route-files incrementally from 'simulation\cwson.rou.xml'
+Loading done.
+Simulation started with time: 0.00.
+Simulation ended at time: 3600.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 8.85s
+ TraCI-Duration: 5.28s
+ Real time factor: 406.964
+ UPS: 31980.217047
+Vehicles:
+ Inserted: 3146 (Loaded: 5952)
+ Running: 77
+ Waiting: 2806
+ Teleports: 187 (Jam: 1, Yield: 186)
+DijkstraRouter answered 12148 queries and explored 2.50 edges on average.
+DijkstraRouter spent 0.01s answering queries (0.00ms on average).

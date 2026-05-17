@@ -1,0 +1,29 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        32.85,
+                        39.92
+                    ],
+                    [
+                        32.86,
+                        39.93
+                    ],
+                    [
+                        32.87,
+                        39.935
+                    ]
+                ]
+            },
+            "properties": {
+                "name": "road1",
+                "lanes": 2
+            }
+        }
+    ]
+}

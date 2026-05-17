@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Greenwave | System Settings</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap"
+                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <script id="tailwind-config">
+                tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "tertiary": "#923357",
+                                                "on-secondary-fixed": "#0d1c2e",
+                                                "secondary-fixed": "#d5e3fc",
+                                                "on-primary-container": "#cbffc2",
+                                                "surface-dim": "#d7dbd2",
+                                                "on-primary-fixed": "#002204",
+                                                "on-background": "#181d17",
+                                                "inverse-surface": "#2d322b",
+                                                "surface-variant": "#e0e4da",
+                                                "on-secondary-container": "#57657a",
+                                                "secondary": "#515f74",
+                                                "outline-variant": "#bfcaba",
+                                                "on-tertiary-fixed-variant": "#7f2448",
+                                                "primary": "#0d631b",
+                                                "on-tertiary": "#ffffff",
+                                                "background": "#f7fbf0",
+                                                "surface-tint": "#1b6d24",
+                                                "on-surface": "#181d17",
+                                                "on-error-container": "#93000a",
+                                                "primary-fixed-dim": "#88d982",
+                                                "on-surface-variant": "#40493d",
+                                                "error": "#ba1a1a",
+                                                "surface-container-high": "#e5eadf",
+                                                "inverse-primary": "#88d982",
+                                                "tertiary-container": "#b14b6f",
+                                                "surface-container-lowest": "#ffffff",
+                                                "tertiary-fixed-dim": "#ffb1c7",
+                                                "on-secondary-fixed-variant": "#3a485b",
+                                                "surface-bright": "#f7fbf0",
+                                                "on-tertiary-container": "#ffedf0",
+                                                "secondary-container": "#d5e3fc",
+                                                "primary-fixed": "#a3f69c",
+                                                "on-primary": "#ffffff",
+                                                "surface-container-low": "#f1f5eb",
+                                                "outline": "#707a6c",
+                                                "secondary-fixed-dim": "#b9c7df",
+                                                "surface-container": "#ebefe5",
+                                                "on-secondary": "#ffffff",
+                                                "tertiary-fixed": "#ffd9e2",
+                                                "surface": "#f7fbf0",
+                                                "on-primary-fixed-variant": "#005312",
+                                                "surface-container-highest": "#e0e4da",
+                                                "primary-container": "#2e7d32",
+                                                "on-tertiary-fixed": "#3f001c",
+                                                "error-container": "#ffdad6",
+                                                "inverse-on-surface": "#eef2e8",
+                                                "on-error": "#ffffff"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "0.125rem",
+                                                "lg": "0.25rem",
+                                                "xl": "0.5rem",
+                                                "full": "0.75rem"
+                                        },
+                                        "fontFamily": {
+                                                "headline": ["Manrope"],
+                                                "body": ["Inter"],
+                                                "label": ["Inter"]
+                                        }
+                                },
+                        }
+                }
+        </script>
+        <style>
+                body {
+                        font-family: 'Inter', sans-serif;
+                        background-color: #f7fbf0;
+                }
+
+                .font-headline {
+                        font-family: 'Manrope', sans-serif;
+                }
+
+                .material-symbols-outlined {
+                        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                }
+
+                .pulse-dot {
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background-color: #0d631b;
+                        box-shadow: 0 0 0 4px rgba(13, 99, 27, 0.2);
+                }
+        </style>
+</head>
+
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+        <!-- SideNavBar Shell -->
+        <aside
+                class="h-screen w-64 fixed left-0 top-0 bg-[#f1f5eb] dark:bg-slate-900 border-r border-[#bfcaba]/15 shadow-[0_8px_24px_rgba(24,29,23,0.06)] flex flex-col py-8 z-50">
+                <div class="px-6 mb-10">
+                        <h1
+                                class="text-2xl font-extrabold text-emerald-900 dark:text-emerald-50 tracking-tight font-headline">
+                                Greenwave Admin</h1>
+                        <p class="text-xs font-medium text-slate-500 uppercase tracking-widest mt-1">City Traffic
+                                Control</p>
+                </div>
+                <nav class="flex-1 space-y-1 px-3">
+                        <a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-800/30 transition-all duration-300 ease-in-out rounded-xl group"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3 group-hover:scale-110 transition-transform"
+                                        data-icon="dashboard">dashboard</span>
+                                <span class="font-medium">Dashboard</span>
+                        </a>
+                        <a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-800/30 transition-all duration-300 ease-in-out rounded-xl group"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3 group-hover:scale-110 transition-transform"
+                                        data-icon="speed">speed</span>
+                                <span class="font-medium">Traffic Flow</span>
+                        </a>
+                        <a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-800/30 transition-all duration-300 ease-in-out rounded-xl group"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3 group-hover:scale-110 transition-transform"
+                                        data-icon="map">map</span>
+                                <span class="font-medium">Map View</span>
+                        </a>
+                        <a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-800/30 transition-all duration-300 ease-in-out rounded-xl group"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3 group-hover:scale-110 transition-transform"
+                                        data-icon="analytics">analytics</span>
+                                <span class="font-medium">Analytics</span>
+                        </a>
+                        <a class="flex items-center px-4 py-3 text-emerald-900 dark:text-emerald-50 font-bold border-r-4 border-emerald-700 bg-emerald-50/50 dark:bg-emerald-900/20 transition-all duration-300 ease-in-out rounded-l-xl"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3" data-icon="settings"
+                                        style="font-variation-settings: 'FILL' 1;">settings</span>
+                                <span class="font-medium">Settings</span>
+                        </a>
+                </nav>
+                <div class="px-4 mt-auto pt-6 space-y-1">
+                        <button
+                                class="w-full mb-6 bg-gradient-to-br from-primary to-primary-container text-white py-3 px-4 rounded-xl font-semibold shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                                <span class="material-symbols-outlined text-[20px]"
+                                        data-icon="description">description</span>
+                                Generate Report
+                        </button>
+                        <a class="flex items-center px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 rounded-xl transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3"
+                                        data-icon="contact_support">contact_support</span>
+                                <span>Support</span>
+                        </a>
+                        <a class="flex items-center px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:bg-emerald-50 rounded-xl transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+                                <span>Logout</span>
+                        </a>
+                </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="ml-64 min-h-screen">
+                <!-- TopNavBar Shell -->
+                <header
+                        class="w-full h-16 bg-[#f7fbf0] dark:bg-slate-950 flex justify-between items-center px-8 sticky top-0 z-40 bg-gradient-to-b from-[#f1f5eb] to-transparent">
+                        <div class="flex items-center gap-4">
+                                <h2
+                                        class="text-xl font-bold text-emerald-900 dark:text-emerald-50 tracking-tight font-headline">
+                                        System Settings</h2>
+                        </div>
+                        <div class="flex items-center gap-6">
+                                <div
+                                        class="flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/15">
+                                        <span class="material-symbols-outlined text-outline mr-2 text-[20px]"
+                                                data-icon="search">search</span>
+                                        <input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-on-surface-variant placeholder-outline"
+                                                placeholder="Search settings..." type="text" />
+                                </div>
+                                <div class="flex items-center gap-4 text-emerald-800">
+                                        <button class="p-2 hover:bg-emerald-50 rounded-full transition-colors relative">
+                                                <span class="material-symbols-outlined" data-icon="help">help</span>
+                                        </button>
+                                        <button class="p-2 hover:bg-emerald-50 rounded-full transition-colors relative">
+                                                <span class="material-symbols-outlined"
+                                                        data-icon="notifications">notifications</span>
+                                                <span
+                                                        class="absolute top-2 right-2 w-2 h-2 bg-tertiary rounded-full border-2 border-surface"></span>
+                                        </button>
+                                        <div
+                                                class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary-fixed shadow-sm">
+                                                <img alt="User profile" class="w-full h-full object-cover"
+                                                        data-alt="Close-up portrait of a professional male system administrator in a modern office with soft cinematic lighting"
+                                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYYzCPEM-t3nhCcIA_G58pUUVwedBp_xM3O7_9Dbyl09kMPqxuvfElzfrWchkm_J3A92al8pwZ6Nc_A5KyqjQkuHtSUC7OGbfQrHnARrphBmbPJj_pKYe7-dBg398v75NmdEzJLS8kPwsgqB5GQaIfgkbhX_d0ik7yPz2gGIef55aU9WCHCXTOCKCoAj7WFMb8N92A4D2gNuaFHNNb-bUDU5KHsjmFwnfj9ZYhfLomz0EzD2AvIGkLjz-RP-d69PIbsiMZATm3JDJp" />
+                                        </div>
+                                </div>
+                        </div>
+                </header>
+                <div class="p-8 w-full space-y-8 pb-32">
+                        <!-- User Profile Bento Grid Section -->
+                        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <!-- System Preferences Glass Card -->
+                                <div
+                                        class="col-span-1 md:col-span-3 bg-surface-container-lowest p-8 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.06)]">
+                                        <div class="flex items-center gap-3 mb-8">
+                                                <div
+                                                        class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-primary">
+                                                        <span class="material-symbols-outlined"
+                                                                data-icon="tune">tune</span>
+                                                </div>
+                                                <h3 class="text-lg font-bold font-headline">System Preferences</h3>
+                                        </div>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="text-[0.75rem] font-bold text-outline uppercase tracking-widest">Appearance</label>
+                                                        <div
+                                                                class="flex items-center bg-surface-container-low p-1 rounded-full w-fit">
+                                                                <button
+                                                                        class="px-4 py-2 rounded-full bg-white shadow-sm text-primary font-bold text-sm flex items-center gap-2">
+                                                                        <span class="material-symbols-outlined text-[18px]"
+                                                                                data-icon="light_mode">light_mode</span>
+                                                                        Light
+                                                                </button>
+                                                                <button
+                                                                        class="px-4 py-2 rounded-full text-on-surface-variant font-medium text-sm flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+                                                                        <span class="material-symbols-outlined text-[18px]"
+                                                                                data-icon="dark_mode">dark_mode</span>
+                                                                        Dark
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="text-[0.75rem] font-bold text-outline uppercase tracking-widest">System
+                                                                Language</label>
+                                                        <div class="relative">
+                                                                <select
+                                                                        class="w-full appearance-none bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20">
+                                                                        <option>English (US)</option>
+                                                                        <option>Turkish</option>
+                                                                        <option>German</option>
+                                                                        <option>Japanese</option>
+                                                                </select>
+                                                                <span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none"
+                                                                        data-icon="expand_more">expand_more</span>
+                                                        </div>
+                                                </div>
+                                                <div class="sm:col-span-2 space-y-4">
+                                                        <div class="flex justify-between items-center">
+                                                                <label
+                                                                        class="text-[0.75rem] font-bold text-outline uppercase tracking-widest">Data
+                                                                        Refresh Rate</label>
+                                                                <span
+                                                                        class="text-sm font-bold text-primary px-3 py-1 bg-emerald-50 rounded-lg">10s</span>
+                                                        </div>
+                                                        <input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-primary"
+                                                                max="60" min="5" step="5" type="range" value="10" />
+                                                        <div
+                                                                class="flex justify-between text-[10px] text-outline font-bold">
+                                                                <span>FAST (5s)</span>
+                                                                <span>STABLE (60s)</span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </section>
+                        <!-- Notification & Security Grid -->
+                        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Notifications Card -->
+                                <div
+                                        class="bg-surface-container-lowest p-8 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.06)]">
+                                        <div class="flex items-center gap-3 mb-8">
+                                                <div
+                                                        class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-primary">
+                                                        <span class="material-symbols-outlined"
+                                                                data-icon="notifications_active">notifications_active</span>
+                                                </div>
+                                                <h3 class="text-lg font-bold font-headline">Notification Channels</h3>
+                                        </div>
+                                        <div class="space-y-6">
+                                                <div class="grid grid-cols-1 gap-4">
+                                                        <label
+                                                                class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl group cursor-pointer hover:bg-surface-container transition-colors">
+                                                                <div class="flex items-center gap-3">
+                                                                        <span class="material-symbols-outlined text-outline"
+                                                                                data-icon="warning">warning</span>
+                                                                        <span class="font-medium text-sm">Critical
+                                                                                Traffic Alerts</span>
+                                                                </div>
+                                                                <input checked=""
+                                                                        class="w-5 h-5 rounded border-outline text-primary focus:ring-primary/20"
+                                                                        type="checkbox" />
+                                                        </label>
+                                                        <label
+                                                                class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl group cursor-pointer hover:bg-surface-container transition-colors">
+                                                                <div class="flex items-center gap-3">
+                                                                        <span class="material-symbols-outlined text-outline"
+                                                                                data-icon="construction">construction</span>
+                                                                        <span class="font-medium text-sm">System
+                                                                                Maintenance</span>
+                                                                </div>
+                                                                <input checked=""
+                                                                        class="w-5 h-5 rounded border-outline text-primary focus:ring-primary/20"
+                                                                        type="checkbox" />
+                                                        </label>
+                                                        <label
+                                                                class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl group cursor-pointer hover:bg-surface-container transition-colors">
+                                                                <div class="flex items-center gap-3">
+                                                                        <span class="material-symbols-outlined text-outline"
+                                                                                data-icon="router">router</span>
+                                                                        <span class="font-medium text-sm">Node
+                                                                                Connectivity Issues</span>
+                                                                </div>
+                                                                <input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary/20"
+                                                                        type="checkbox" />
+                                                        </label>
+                                                </div>
+                                                <div class="pt-4 border-t border-outline-variant/10">
+                                                        <p
+                                                                class="text-[0.75rem] font-bold text-outline uppercase tracking-widest mb-4">
+                                                                Delivery Methods</p>
+                                                        <div class="flex flex-wrap gap-2">
+                                                                <span
+                                                                        class="px-3 py-1.5 bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold flex items-center gap-2">
+                                                                        <span class="material-symbols-outlined text-sm"
+                                                                                data-icon="mail">mail</span> Email
+                                                                </span>
+                                                                <span
+                                                                        class="px-3 py-1.5 bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold flex items-center gap-2">
+                                                                        <span class="material-symbols-outlined text-sm"
+                                                                                data-icon="sms">sms</span> SMS
+                                                                </span>
+                                                                <span
+                                                                        class="px-3 py-1.5 bg-surface-container-high text-on-surface-variant rounded-lg text-xs font-bold flex items-center gap-2 opacity-50">
+                                                                        <span class="material-symbols-outlined text-sm"
+                                                                                data-icon="notifications_none">notifications_none</span>
+                                                                        Push
+                                                                </span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- Security Card -->
+                                <div
+                                        class="bg-surface-container-lowest p-8 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.06)]">
+                                        <div class="flex items-center gap-3 mb-8">
+                                                <div
+                                                        class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-primary">
+                                                        <span class="material-symbols-outlined"
+                                                                data-icon="security">security</span>
+                                                </div>
+                                                <h3 class="text-lg font-bold font-headline">Security &amp; Access</h3>
+                                        </div>
+                                        <div class="space-y-6">
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="text-[0.75rem] font-bold text-outline uppercase tracking-widest">Password</label>
+                                                        <div class="relative">
+                                                                <input class="w-full bg-surface-container-low border-b-2 border-outline px-4 py-3 text-sm focus:border-primary focus:ring-0 transition-all rounded-t-lg"
+                                                                        type="password" value="••••••••••••" />
+                                                                <button class="absolute right-3 top-3 text-outline">
+                                                                        <span class="material-symbols-outlined text-[20px]"
+                                                                                data-icon="visibility">visibility</span>
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                                <div
+                                                        class="flex items-center justify-between p-4 bg-emerald-50 rounded-xl border border-primary/10">
+                                                        <div class="flex items-center gap-3">
+                                                                <div class="pulse-dot"></div>
+                                                                <div>
+                                                                        <p class="font-bold text-sm text-primary">
+                                                                                Two-Factor Authentication</p>
+                                                                        <p
+                                                                                class="text-[10px] text-primary/60 font-medium">
+                                                                                ENABLED VIA AUTHENTICATOR APP</p>
+                                                                </div>
+                                                        </div>
+                                                        <button
+                                                                class="text-xs font-bold text-primary hover:underline">Manage</button>
+                                                </div>
+                                                <div class="space-y-2">
+                                                        <label
+                                                                class="text-[0.75rem] font-bold text-outline uppercase tracking-widest">Session
+                                                                Timeout</label>
+                                                        <div class="relative">
+                                                                <select
+                                                                        class="w-full appearance-none bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20">
+                                                                        <option>15 Minutes</option>
+                                                                        <option>30 Minutes</option>
+                                                                        <option selected="">1 Hour</option>
+                                                                        <option>End of Day</option>
+                                                                </select>
+                                                                <span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none"
+                                                                        data-icon="timer">timer</span>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </section>
+                        <!-- System Info Section (Read-only) -->
+                        <section class="bg-surface-container-low/50 p-8 rounded-full">
+                                <div
+                                        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                                        <div class="flex items-center gap-6">
+                                                <div class="space-y-1">
+                                                        <p
+                                                                class="text-[10px] font-bold text-outline uppercase tracking-widest">
+                                                                Software Version</p>
+                                                        <p class="text-sm font-bold text-on-surface">v2.4.8-stable</p>
+                                                </div>
+                                                <div class="w-[1px] h-8 bg-outline-variant/30 hidden md:block"></div>
+                                                <div class="space-y-1">
+                                                        <p
+                                                                class="text-[10px] font-bold text-outline uppercase tracking-widest">
+                                                                Active Nodes</p>
+                                                        <p class="text-sm font-bold text-on-surface">1,242 Nodes</p>
+                                                </div>
+                                                <div class="w-[1px] h-8 bg-outline-variant/30 hidden md:block"></div>
+                                                <div class="space-y-1">
+                                                        <p
+                                                                class="text-[10px] font-bold text-outline uppercase tracking-widest">
+                                                                Last Backup</p>
+                                                        <p class="text-sm font-bold text-on-surface">Today, 04:00 AM</p>
+                                                </div>
+                                        </div>
+                                        <div class="flex gap-4">
+                                                <button
+                                                        class="px-6 py-3 rounded-xl bg-surface-container-highest text-on-surface font-bold text-sm hover:brightness-95 transition-all">
+                                                        Check for Updates
+                                                </button>
+                                                <button
+                                                        class="px-8 py-3 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                                                        Save Changes
+                                                </button>
+                                        </div>
+                                </div>
+                        </section>
+                </div>
+        </main>
+        <!-- Map Floating Context (Background Style Representation) -->
+        <div
+                class="fixed bottom-8 right-8 w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white z-10 hidden lg:block grayscale-[0.2] contrast-[1.1]">
+                <img alt="System Context" class="w-full h-full object-cover"
+                        data-alt="Top down minimal map view of city intersection with glowing green traffic patterns and digital data overlays"
+                        data-location="Metropolis"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQg66DoNHFD_CdmXuPjp7j66sTZuD0JsgqEFFfc_EEOcrdj_QJBkFt9eYO4_daZP8xIan779hfVJ-ZBrGTldXvQjui8KT7itDT8APw7wub9qZV8gfenkh_QpnMzjG5MLVFSmPM_amocnoilhScqHCK0mzi2XJED1ekzP51ienxFgJvg6CMTP-ahXARjArEVZq32_gBGO-hsjUqCEj6rQKoihIXrvlGViIPPfEohYhBa1TxsOuynT1mRklFj6KT2v90RCKgmOZeKyz5" />
+                <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+                <div
+                        class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-primary flex items-center gap-1">
+                        <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span> SYSTEM LIVE
+                </div>
+        </div>
+</body>
+
+</html>

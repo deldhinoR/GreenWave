@@ -1,0 +1,36 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    
+    <!-- Vehicle Types -->
+    <vType id="car" vClass="passenger" accel="2.6" decel="4.5" length="5.0" maxSpeed="13.9" guiShape="passenger"/>
+    <vType id="emergency" vClass="emergency" guiShape="emergency"/>
+
+    <!-- Individual Trips -->
+    <trip id="t_emergency_1" type="emergency" depart="0.00" color="green" from="E7" to="E0.2" via="E8 E10 E10.10 E0"/>
+
+    <!-- =========================
+         High Traffic Flows
+         ========================= -->
+    <!-- From North to South and other directions -->
+    <flow id="f_north_south_1" begin="0.00" end="3600.00" perHour="7200" from="E13" to="E16" via="E14 E15 E15.15 E17 E17.2" departLane="best" type="car"/>
+    <flow id="f_north_south_2" begin="0.00" end="3600.00" perHour="7200" from="E13" to="E0.2" via="E14 E15 E15.15 E0" departLane="best" type="car"/>
+    <flow id="f_south_north_1" begin="0.00" end="3600.00" perHour="7200" from="E1" to="E4.1" via="E1.115 E4" departLane="best" type="car"/>
+    <flow id="f_south_north_2" begin="0.00" end="3600.00" perHour="7200" from="E1" to="E16" via="E1.115 E17 E17.2" departLane="best" type="car"/>
+    <flow id="f_west_east_1" begin="0.00" end="3600.00" perHour="7200" from="E3" to="E9" via="E18 E18.8 E11.1" departLane="best" type="car"/>
+    <flow id="f_west_east_2" begin="0.00" end="3600.00" perHour="7200" from="E3" to="E4.1" via="E18 E18.8 E4" departLane="best" type="car"/>
+    <flow id="f_east_west_1" begin="0.00" end="3600.00" perHour="7200" from="E7" to="E0.2" via="E8 E10 E10.10 E0" departLane="best" type="car"/>
+    <flow id="f_east_west_2" begin="0.00" end="3600.00" perHour="7200" from="E7" to="E9" via="E8 E10 E10.10 E11 E11.1" departLane="best" type="car"/>
+
+    <!-- Duplicate flows for extra density -->
+    <flow id="f_north_south_3" begin="0.00" end="3600.00" perHour="7200" from="E13" to="E16" via="E14 E15 E15.15 E17 E17.2" departLane="best" type="car"/>
+    <flow id="f_south_north_3" begin="0.00" end="3600.00" perHour="7200" from="E1" to="E4.1" via="E1.115 E4" departLane="best" type="car"/>
+    <flow id="f_west_east_3" begin="0.00" end="3600.00" perHour="7200" from="E3" to="E9" via="E18 E18.8 E11.1" departLane="best" type="car"/>
+    <flow id="f_east_west_3" begin="0.00" end="3600.00" perHour="7200" from="E7" to="E9" via="E8 E10 E10.10 E11 E11.1" departLane="best" type="car"/>
+
+    <!-- Emergency Vehicle Flow -->
+    <flow id="f_emergency_1" type="emergency" begin="0.00" end="3600.00" perHour="60" from="E13" to="E0.2" via="E14 E15 E15.15 E0" departLane="best"/>
+
+</routes>
+
+
+

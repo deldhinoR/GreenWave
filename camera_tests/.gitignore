@@ -1,0 +1,4 @@
+scripts/*.pt
+scripts/footage/
+scripts/dataset/
+scripts/__pycache__/

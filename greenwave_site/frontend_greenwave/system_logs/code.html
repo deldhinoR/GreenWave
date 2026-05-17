@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Logs | Greenwave</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#0d1c2e",
+                    "surface-container-low": "#f1f5eb",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#b14b6f",
+                    "on-primary-fixed": "#002204",
+                    "on-surface": "#181d17",
+                    "on-tertiary-fixed": "#3f001c",
+                    "secondary": "#515f74",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7fbf0",
+                    "surface-bright": "#f7fbf0",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#2e7d32",
+                    "surface-variant": "#e0e4da",
+                    "on-primary-fixed-variant": "#005312",
+                    "outline-variant": "#bfcaba",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#40493d",
+                    "primary-fixed": "#a3f69c",
+                    "background": "#f7fbf0",
+                    "secondary-fixed": "#d5e3fc",
+                    "inverse-on-surface": "#eef2e8",
+                    "surface-container": "#ebefe5",
+                    "tertiary-fixed": "#ffd9e2",
+                    "inverse-surface": "#2d322b",
+                    "outline": "#707a6c",
+                    "surface-container-high": "#e5eadf",
+                    "on-primary-container": "#cbffc2",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#923357",
+                    "primary-fixed-dim": "#88d982",
+                    "secondary-container": "#d5e3fc",
+                    "primary": "#0d631b",
+                    "on-tertiary-container": "#ffedf0",
+                    "surface-tint": "#1b6d24",
+                    "on-background": "#181d17",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "on-tertiary-fixed-variant": "#7f2448",
+                    "surface-dim": "#d7dbd2",
+                    "tertiary-fixed-dim": "#ffb1c7",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#57657a",
+                    "surface-container-highest": "#e0e4da",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#88d982",
+                    "secondary-fixed-dim": "#b9c7df"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-[#f1f5eb] dark:bg-[#181d17] h-screen w-64 border-r-0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-50">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="energy_savings_leaf">energy_savings_leaf</span>
+</div>
+<div>
+<h1 class="font-manrope text-xl font-bold tracking-tight text-[#0d631b] dark:text-[#88d982]">Greenwave</h1>
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold">The Living Grid</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-3">
+<a class="flex items-center gap-4 px-4 py-3 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide font-medium rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#0d631b] dark:text-[#88d982] font-bold bg-[#e5eadf] dark:bg-[#2e352b] rounded-r-full font-manrope text-sm tracking-wide transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                System Logs
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide font-medium rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide font-medium rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="edit_road">edit_road</span>
+                Editor
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#707a6c] dark:text-[#bfcaba] hover:text-[#0d631b] dark:hover:text-[#88d982] hover:bg-[#e5eadf] dark:hover:bg-[#2e352b] transition-colors duration-300 font-manrope text-sm tracking-wide font-medium rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="p-4 bg-surface-container rounded-full flex items-center gap-3">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border-2 border-primary-fixed-dim" data-alt="Close up portrait of a professional system administrator in a clean modern office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrlvSZBI21v9Pp7qtve0e5OBxREikuhKmB2tNIwbgmBTT8cwbtyKFZ5nbiuhtrKDhdAIdqIFSGDnh8xleh3pG-lYMFnDUytA9iwj1yeJukzYQnXxLM2LGdXV5I14aAKemYiWj-7aYqIMLon8HJZ3KQnnnN8NdLAXDXyjX3BiEZktbl18A5KQHW76ZcYNX709_o3mnPsiDRBpr1ZT3DwohMIfLInltFL2zIs9fcOXT3bne5fgMgL0_WOQf6CNpxuIQoh6J57-K-AN4-"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Admin Shell</p>
+<p class="text-[10px] text-outline uppercase tracking-tighter">Level 4 Access</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between px-8 ml-0 w-full h-16 sticky top-0 z-50 bg-[#f7fbf0]/85 dark:bg-[#181d17]/85 backdrop-blur-md shadow-[0_8px_24px_rgba(24,29,23,0.06)]">
+<div class="flex items-center gap-6 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 placeholder:text-outline transition-all" placeholder="Search events or intersections..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-outline hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-outline hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+</button>
+<button class="p-2 text-outline hover:bg-[#f1f5eb] dark:hover:bg-[#2e352b] rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<main class="p-8 flex-1">
+<!-- Header Section -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h2 class="text-3xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">System Events</h2>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Live monitoring of 1,248 connected intersections
+                    </p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-semibold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="file_download">file_download</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full text-sm font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                        Refresh Logs
+                    </button>
+</div>
+</div>
+<!-- Dashboard Overview Stats (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.04)] flex flex-col justify-between">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Total Events (24h)</span>
+<div class="flex items-end justify-between mt-2">
+<span class="text-3xl font-black font-headline text-primary">12,842</span>
+<span class="text-primary text-xs font-bold">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.04)] flex flex-col justify-between border-l-4 border-tertiary">
+<span class="text-[10px] uppercase font-bold tracking-widest text-tertiary">Critical Alerts</span>
+<div class="flex items-end justify-between mt-2">
+<span class="text-3xl font-black font-headline text-on-surface">03</span>
+<span class="text-tertiary text-xs font-bold">-2</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.04)] flex flex-col justify-between">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Active Sensors</span>
+<div class="flex items-end justify-between mt-2">
+<span class="text-3xl font-black font-headline text-on-surface">99.8%</span>
+<span class="text-primary text-xs font-bold">Stable</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.04)] flex flex-col justify-between">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Avg Response</span>
+<div class="flex items-end justify-between mt-2">
+<span class="text-3xl font-black font-headline text-on-surface">1.2s</span>
+<span class="text-outline text-xs font-bold">ms</span>
+</div>
+</div>
+</div>
+<!-- Filters & Table Section -->
+<div class="bg-surface-container-lowest rounded-full shadow-[0_8px_24px_rgba(24,29,23,0.04)] overflow-hidden">
+<!-- Advanced Filter Bar -->
+<div class="p-4 px-8 bg-surface-container-low flex flex-wrap items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-outline">Severity:</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full">All</button>
+<button class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded-full hover:bg-surface-variant">Critical</button>
+<button class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded-full hover:bg-surface-variant">Warning</button>
+</div>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-outline">Date Range:</span>
+<button class="flex items-center gap-2 px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded-full">
+                            Last 24 Hours
+                            <span class="material-symbols-outlined text-[14px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-outline">Sort By:</span>
+<button class="flex items-center gap-2 px-3 py-1 bg-surface-container-high text-on-surface-variant text-[10px] font-bold rounded-full">
+                            Newest First
+                            <span class="material-symbols-outlined text-[14px]" data-icon="sort">sort</span>
+</button>
+</div>
+</div>
+<!-- Table Content -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container text-outline text-[10px] uppercase tracking-widest font-bold">
+<th class="px-8 py-5">Timestamp</th>
+<th class="px-6 py-5">Intersection ID</th>
+<th class="px-6 py-5">Event Type</th>
+<th class="px-6 py-5">Severity</th>
+<th class="px-6 py-5">Status</th>
+<th class="px-8 py-5 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-surface-container-low/50 transition-colors duration-200">
+<td class="px-8 py-4 font-medium tabular-nums">2023-11-24 14:22:01</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="fmd_good">fmd_good</span>
+<span>INT-7742 (Broadway &amp; 5th)</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[11px] font-bold rounded-full">Sensor Offline</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-error">
+<span class="w-2 h-2 rounded-full bg-error" style="box-shadow: 0 0 8px #ba1a1a;"></span>
+<span class="font-bold">CRITICAL</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-on-surface-variant italic">
+<span class="material-symbols-outlined text-[16px]" data-icon="engineering">engineering</span>
+                                        Dispatching...
+                                    </span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Warning -->
+<tr class="hover:bg-surface-container-low/50 transition-colors duration-200">
+<td class="px-8 py-4 font-medium tabular-nums">2023-11-24 14:19:45</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="fmd_good">fmd_good</span>
+<span>INT-1209 (Oak &amp; Pine)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">
+                                    High Volume Alert
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-[#9a6b00]">
+<span class="w-2 h-2 rounded-full bg-[#9a6b00]"></span>
+<span class="font-bold">WARNING</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface text-[11px] font-bold rounded-full">Optimizing Flow</span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Info -->
+<tr class="hover:bg-surface-container-low/50 transition-colors duration-200">
+<td class="px-8 py-4 font-medium tabular-nums">2023-11-24 14:15:12</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="fmd_good">fmd_good</span>
+<span>INT-8821 (Market St.)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">
+                                    Signal Cycle Change
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-bold">INFO</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                                        Completed
+                                    </span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Info -->
+<tr class="hover:bg-surface-container-low/50 transition-colors duration-200">
+<td class="px-8 py-4 font-medium tabular-nums">2023-11-24 14:02:33</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="fmd_good">fmd_good</span>
+<span>INT-4410 (Main &amp; West)</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface">
+                                    System Diagnostics
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-bold">INFO</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                                        Success
+                                    </span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Critical -->
+<tr class="hover:bg-surface-container-low/50 transition-colors duration-200">
+<td class="px-8 py-4 font-medium tabular-nums">2023-11-24 13:55:00</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="fmd_good">fmd_good</span>
+<span>INT-9002 (Expressway E4)</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-[11px] font-bold rounded-full">Gridlock Pattern</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-bold">CRITICAL</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1 text-on-surface-variant italic">
+<span class="material-symbols-outlined text-[16px]" data-icon="warning">warning</span>
+                                        Priority Override
+                                    </span>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant/10">
+<span class="text-xs text-outline font-medium">Showing 1 to 10 of 12,842 results</span>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container-high text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container-high text-xs font-bold transition-colors">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-outline">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-surface-container-high text-xs font-bold transition-colors">128</button>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Subtle Map Indicator (Signature Decor) -->
+<div class="fixed bottom-6 right-6 w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-lowest shadow-2xl z-40 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Small circular map snippet of an urban street grid with glowing green traffic paths" data-location="Chicago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr9bPxxCJenTJLbcWeIvy44ZfVOlUDxOyuXEhXdbc6ZPu0PXK9UE5oUKI_SGXxcMdAx0TtROzlsBzAPe5wR4I9vA59lXYQ3Pe6rxIgGSFwfK07rKBxiGF1XZxu3Bg3nA55M4fIEhDm9dWe3d564VmrnL3bIJlkq_ExrPFopV4a_7MVF2z1W8EvfID8LcGF30G4HSGk1N7E9eV0HZBaAX-WRRL8E6qPXZlEH4pIvbnOq1kRlvB47-AZ7w34pBn60yN58nEoQet7fIn1"/>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl" data-icon="map">map</span>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greenwave Login | The Living Grid</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-container-low": "#f1f5eb",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#b14b6f",
+                        "on-primary-fixed": "#002204",
+                        "on-surface": "#181d17",
+                        "on-tertiary-fixed": "#3f001c",
+                        "secondary": "#515f74",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface": "#f7fbf0",
+                        "surface-bright": "#f7fbf0",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#2e7d32",
+                        "surface-variant": "#e0e4da",
+                        "on-primary-fixed-variant": "#005312",
+                        "outline-variant": "#bfcaba",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#40493d",
+                        "primary-fixed": "#a3f69c",
+                        "background": "#f7fbf0",
+                        "secondary-fixed": "#d5e3fc",
+                        "inverse-on-surface": "#eef2e8",
+                        "surface-container": "#ebefe5",
+                        "tertiary-fixed": "#ffd9e2",
+                        "inverse-surface": "#2d322b",
+                        "outline": "#707a6c",
+                        "surface-container-high": "#e5eadf",
+                        "on-primary-container": "#cbffc2",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#923357",
+                        "primary-fixed-dim": "#88d982",
+                        "secondary-container": "#d5e3fc",
+                        "primary": "#0d631b",
+                        "on-tertiary-container": "#ffedf0",
+                        "surface-tint": "#1b6d24",
+                        "on-background": "#181d17",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-tertiary-fixed-variant": "#7f2448",
+                        "surface-dim": "#d7dbd2",
+                        "tertiary-fixed-dim": "#ffb1c7",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#57657a",
+                        "surface-container-highest": "#e0e4da",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#88d982",
+                        "secondary-fixed-dim": "#b9c7df"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .headline-font {
+            font-family: 'Manrope', sans-serif;
+        }
+        .bg-living-grid {
+            background-image: radial-gradient(circle at 2px 2px, #0d631b15 1px, transparent 0);
+            background-size: 48px 48px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Abstract Background Element -->
+<div class="absolute inset-0 z-0 bg-living-grid opacity-40"></div>
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed-dim/20 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-24 -right-24 w-[32rem] h-[32rem] bg-secondary-fixed-dim/10 rounded-full blur-[160px]"></div>
+<div class="w-full max-w-md z-10">
+<!-- Brand Identity Section -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-xl mb-4 shadow-[0_8px_24px_rgba(13,99,27,0.2)]">
+<span class="material-symbols-outlined text-on-primary text-4xl" data-weight="fill">traffic</span>
+</div>
+<h1 class="headline-font text-3xl font-extrabold tracking-tight text-primary">Greenwave</h1>
+<p class="font-label text-sm uppercase tracking-[0.1em] text-outline mt-1 font-medium">The Living Grid</p>
+</div>
+<!-- Login Card -->
+<div class="surface-container-lowest glass-panel rounded-full p-10 shadow-[0_8px_24px_rgba(24,29,23,0.06)] border border-outline-variant/15">
+<header class="mb-8">
+<h2 class="headline-font text-xl font-bold text-on-surface">Secure Administrator Login</h2>
+<p class="text-on-surface-variant text-sm mt-1">Authorized access to city grid management.</p>
+</header>
+<form action="#" class="space-y-6" method="POST">
+<!-- Username Field -->
+<div class="relative">
+<label class="font-label text-xs font-bold uppercase tracking-wider text-outline mb-2 block" for="username">System Username</label>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-0 text-outline group-focus-within:text-primary transition-colors duration-300">account_circle</span>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline focus:border-primary focus:ring-0 pl-8 pb-2 pt-1 font-body text-on-surface placeholder:text-outline-variant transition-all duration-300" id="username" name="username" placeholder="admin_green_01" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="relative">
+<div class="flex justify-between items-center mb-2">
+<label class="font-label text-xs font-bold uppercase tracking-wider text-outline block" for="password">Access Token</label>
+<a class="text-primary text-xs font-semibold hover:underline" href="#">Forgot Access?</a>
+</div>
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-0 text-outline group-focus-within:text-primary transition-colors duration-300">lock</span>
+<input class="w-full bg-surface-container-low border-0 border-b-2 border-outline focus:border-primary focus:ring-0 pl-8 pb-2 pt-1 font-body text-on-surface placeholder:text-outline-variant transition-all duration-300" id="password" name="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-0 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me Toggle -->
+<div class="flex items-center space-x-3 py-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-10 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<span class="text-sm font-medium text-on-surface-variant">Persistent Session (30 Days)</span>
+</div>
+<!-- Login Button -->
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary headline-font font-bold rounded-xl shadow-lg hover:shadow-primary/20 hover:scale-[1.01] transition-all duration-300 flex items-center justify-center space-x-2" type="submit">
+<span>Initialize System Access</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<footer class="mt-8 pt-8 border-t border-outline-variant/15 flex flex-col items-center">
+<div class="flex items-center space-x-2 mb-4">
+<span class="material-symbols-outlined text-primary text-sm" data-weight="fill">shield_with_heart</span>
+<p class="text-xs font-semibold text-outline tracking-tight uppercase">ISO 27001 Certified Security Infrastructure</p>
+</div>
+<div class="flex space-x-6 text-xs font-medium text-on-secondary-container/60">
+<a class="hover:text-primary transition-colors" href="#">Security Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terminal Log</a>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</div>
+<!-- System Message -->
+<div class="mt-8 flex items-center justify-center space-x-2 text-on-surface-variant">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-medium tracking-wide">SYSTEM NODE #882: OPTIMIZED TRAFFIC FLOW ACTIVE</span>
+</div>
+</div>
+<!-- Decorative Map Element -->
+<div class="absolute top-1/2 left-12 -translate-y-1/2 hidden xl:block w-72 h-96 opacity-10 pointer-events-none">
+<img alt="aerial city grid view" class="w-full h-full object-cover rounded-full grayscale mix-blend-multiply" data-alt="abstract black and white aerial view of a clean modern city street grid with geometric patterns and soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0eqKRfsviWbSf2SRygQajqlB4SI-izT3sbQMBPIlN-LwMVqwqkzWdwLSSPkN2v0j_mnvpGliN2pnj_wGtpu_apr26t2Jd_985RN9Gh-P_1lvJzCExgDbroDxsk98wngkIQYGAlTxt-QNbvth6gVEK1E_A4V-eM0BfbaG0m3hmCRIV65nqq-B-Tpe3_yIMpFR0lrQeNjOw6u0X2ugFn-rWa0vlp_27vDjlcIJKye3jV9hfyc8O-H4m4Ss78D_b0VpwF-HBB5LREQ53"/>
+</div>
+<div class="absolute top-1/2 right-12 -translate-y-1/2 hidden xl:block w-72 h-96 opacity-10 pointer-events-none">
+<img alt="network nodes and connections" class="w-full h-full object-cover rounded-full grayscale mix-blend-multiply" data-alt="abstract close up of fiber optic cables and light data nodes representing high-speed digital connectivity and traffic flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnCgQUQ-CYctqzydY6DBpdc9CPBhLIx9luOGXA11qLXZOzkgdu_bzbHlK9lqnF9KLzns4ONIT6pze0VM65tvYWu65pxrPiMyelA7q7QY6Iyhz64uFOckalFjzfZ54GZImZoGUY-7voEB5N8z1NOoy11pTrhLp1ax3XmAzh62-An6k4CXcnWLlgtRnZHizhqiHAau-rz-5dijtVEZVoctQuJVSs4xW-5P8y6gxuPIFKDGROVgB8btVjlzMuTDOjbhTCqAGxjZ7GZoZ4"/>
+</div>
+</body></html>

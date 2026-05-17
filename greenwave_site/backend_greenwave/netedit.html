@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetEdit</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        :root {
+            --panel-bg: rgba(245, 248, 255, 0.96);
+            --panel-border: #b8c7e4;
+            --accent: #2563eb;
+            --text: #18212f;
+            --warn: #f59e0b;
+            --shadow: 0 18px 40px rgba(25, 52, 98, 0.16);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            color: var(--text);
+        }
+
+        #map {
+            height: 100vh;
+        }
+
+        .panel {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            width: min(280px, calc(100vw - 32px));
+            min-width: 240px;
+            max-width: 420px;
+            max-height: calc(100vh - 50px);
+            overflow: auto;
+            resize: horizontal;
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 16px;
+            backdrop-filter: blur(8px);
+        }
+
+        h1, h2 {
+            margin: 0 0 8px;
+        }
+
+        p {
+            margin: 0 0 12px;
+            line-height: 1.45;
+        }
+
+        .status {
+            font-size: 14px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.1);
+            margin-bottom: 12px;
+        }
+
+        .status[data-error="true"] {
+            background: rgba(188, 44, 26, 0.16);
+            color: #932316;
+        }
+
+        .group {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(86, 111, 148, 0.2);
+        }
+
+        .group-title {
+            margin: 0 0 10px;
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #55627c;
+            font-weight: 700;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #b5c2db;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .road-id-wrap {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        .road-id-prefix,
+        .road-id-suffix {
+            font-weight: 700;
+            color: #31435f;
+            font-size: 15px;
+        }
+
+        #road-alias-number {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .id-step {
+            padding: 10px;
+            min-width: 42px;
+        }
+
+        .button-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .button-row.single {
+            grid-template-columns: 1fr;
+        }
+
+        button {
+            border: 0;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            color: white;
+            background: var(--accent);
+        }
+
+        button.secondary {
+            background: #5b6f91;
+        }
+
+        button.warn {
+            background: var(--warn);
+            color: #1f1f1f;
+        }
+
+        button.dark {
+            background: #1e293b;
+        }
+
+        button.danger {
+            background: #b91c1c;
+        }
+
+        .turn-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .meta {
+            font-size: 14px;
+            color: #50617f;
+        }
+
+        .segment-handle {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px rgba(24, 33, 47, 0.22);
+        }
+
+        .segment-handle-start {
+            background: #22c55e;
+        }
+
+        .segment-handle-end {
+            background: #f97316;
+        }
+
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal-card {
+            width: min(360px, calc(100vw - 32px));
+            background: #f8fbff;
+            border: 1px solid #b8c7e4;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(25, 52, 98, 0.28);
+            padding: 14px;
+        }
+
+        .modal-title {
+            margin: 0 0 6px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .modal-text {
+            margin: 0;
+            font-size: 14px;
+            color: #3b4a63;
+        }
+
+
+        .floating-cancel {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 2147483647 !important;
+            display: inline-block;
+            background: #b91c1c;
+            color: #fff;
+            border-radius: 12px;
+            padding: 10px 14px;
+            border: 0;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.38);
+            isolation: isolate;
+            transform: translateZ(0);
+        }
+
+        .floating-cancel:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .floating-undo {
+            position: fixed;
+            left: 20px;
+            bottom: 72px;
+            z-index: 2147483647 !important;
+            display: inline-block;
+            background: #5b6f91;
+            color: #fff;
+            border-radius: 12px;
+            padding: 10px 14px;
+            border: 0;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+            isolation: isolate;
+            transform: translateZ(0);
+        }
+
+        .camera-stage {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: none;
+            background: rgba(15, 23, 42, 0.58);
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .camera-stage.show {
+            display: block;
+        }
+
+        .camera-shell {
+            width: min(1540px, 100%);
+            height: 100%;
+            margin: 0 auto;
+            background: #f8fbff;
+            border: 1px solid #b8c7e4;
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(25, 52, 98, 0.32);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            overflow: hidden;
+        }
+
+        .camera-side {
+            border-right: 1px solid rgba(86, 111, 148, 0.2);
+            padding: 14px;
+            overflow: auto;
+        }
+
+        .camera-main {
+            padding: 14px;
+            display: grid;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 10px;
+            overflow: auto;
+        }
+
+        .camera-list {
+            display: grid;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .camera-item {
+            border: 1px solid #c7d3e8;
+            border-radius: 10px;
+            padding: 8px;
+            background: #eef3fc;
+            cursor: pointer;
+            text-align: left;
+            font-size: 13px;
+            color: #1d2d45;
+            font-weight: 700;
+        }
+
+        .camera-item.active {
+            border-color: #2563eb;
+            background: #e4edff;
+        }
+
+        .camera-canvas-wrap {
+            position: relative;
+            border: 1px solid #c7d3e8;
+            border-radius: 12px;
+            background: #0f172a;
+            min-height: 65vh;
+            max-height: 76vh;
+            overflow: auto;
+        }
+
+        #camera-preview-image,
+        #camera-preview-video,
+        #camera-draw-canvas {
+            width: auto;
+            height: auto;
+            display: block;
+            max-width: none;
+            max-height: none;
+            object-fit: contain;
+            margin: 0;
+        }
+
+        #camera-preview-video {
+            background: #0b1021;
+        }
+
+        #camera-draw-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: crosshair;
+        }
+
+        .camera-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .camera-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .camera-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .camera-note {
+            font-size: 12px;
+            color: #55627c;
+        }
+
+        .road-chip {
+            display: inline-block;
+            background: #dbe7ff;
+            color: #1e3a8a;
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="panel">
+        <h1>Editor</h1>
+        <p>Road ID, lane count, and turn rules can be changed by clicking roads.</p>
+        <div id="editor-status" class="status" data-error="false">Loading network...</div>
+
+        <div class="group">
+            <h2 id="selected-link">No road selected</h2>
+            <div id="selected-meta" class="meta">Select a blue road.</div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Road ID</div>
+            <label for="road-alias-number">Road Code</label>
+            <div class="road-id-wrap">
+                <span class="road-id-prefix">R[</span>
+                <input id="road-alias-number" type="number" min="1" step="1" />
+                <span class="road-id-suffix">]</span>
+                <div class="button-row" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+                    <button id="alias-minus" class="secondary id-step" type="button">-</button>
+                    <button id="alias-plus" class="secondary id-step" type="button">+</button>
+                </div>
+            </div>
+            <div class="button-row">
+                <button id="save-alias">Save Road ID</button>
+                <button id="delete-road" class="danger">Delete Road</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Lane Editing</div>
+            <label for="lane-count">Lane Count</label>
+            <input id="lane-count" type="number" min="1" value="1" />
+            <div class="button-row">
+                <button id="apply-lanes">Apply to Whole Road</button>
+                <button id="segment-mode" class="warn">Start Segment Edit</button>
+            </div>
+            <div class="button-row single">
+                <button id="clear-segments" class="secondary">Clear Segment Edits</button>
+            </div>
+            <div class="button-row single">
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Length Editing</div>
+            <div class="meta">Adjust the road's effective start/end by selecting a keep range.</div>
+            <div class="button-row single">
+                <button id="length-mode" class="warn">Start Length Edit</button>
+            </div>
+            <div class="button-row">
+                <button id="reset-length" class="secondary">Reset Length</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Turn Rules</div>
+            <div id="turn-options" class="meta">Once a road is selected, editable exits appear here.</div>
+            <div class="button-row single">
+                <button id="save-turns" class="secondary">Save Turning Permissions</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">Traffic Lights</div>
+            <div id="tls-meta" class="meta">Select a road and mark its start/end junction as traffic light.</div>
+            <div class="button-row">
+                <button id="tls-add-start" class="warn">Add Start Junction</button>
+                <button id="tls-add-end" class="warn">Add End Junction</button>
+            </div>
+            <div class="button-row">
+                <button id="tls-remove-start" class="secondary">Remove Start</button>
+                <button id="tls-remove-end" class="secondary">Remove End</button>
+            </div>
+            <div class="button-row single">
+                <button id="tls-clear-all" class="secondary">Clear All Traffic Lights</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <div class="group-title">System Identity</div>
+            <label for="region-name-input">System Name</label>
+            <input id="region-name-input" type="text" placeholder="Example: Kizilay Central" />
+            <label for="region-address-input">Address (Auto)</label>
+            <input id="region-address-input" type="text" placeholder="Address will be auto-filled" readonly />
+        </div>
+
+        <div class="group">
+            <div class="button-row">
+                <button id="back-home" class="secondary">Back</button>
+                <button id="export-json" class="dark">Create SUMO Project Files</button>
+            </div>
+            <div class="button-row single">
+                <button id="save-all-btn" class="dark" type="button">Save All (SUMO + Camera Config)</button>
+            </div>
+            <div class="button-row single">
+                <button id="open-camera-setup" class="warn" type="button">Camera Setup</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="revert-edit" class="floating-undo" type="button">Undo (Ctrl+Z)</button>
+    <button id="edit-cancel-btn" class="floating-cancel" type="button" disabled>Cancel Edit</button>
+
+    <section id="camera-stage" class="camera-stage" aria-hidden="true">
+        <div class="camera-shell">
+            <aside class="camera-side">
+                <h2 style="margin:0 0 8px;">Camera Setup</h2>
+                <p class="camera-note">Post-export stage: add camera sources, link roads, draw road shapes on a frame, export config.</p>
+                <div class="button-row single">
+                    <button id="add-camera-btn" type="button">+ Add Camera</button>
+                </div>
+                <div id="camera-list" class="camera-list"></div>
+                <div class="button-row single">
+                    <button id="close-camera-stage-btn" class="secondary" type="button">Close</button>
+                </div>
+            </aside>
+
+            <div class="camera-main">
+                <div class="camera-grid">
+                    <div>
+                        <label for="camera-name-input">Camera Name</label>
+                        <input id="camera-name-input" type="text" placeholder="Camera 1" />
+                    </div>
+                    <div>
+                        <label for="camera-source-type">Source Type</label>
+                        <select id="camera-source-type">
+                            <option value="file">Video Footage</option>
+                            <option value="url">Stream URL</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="camera-source-file-wrap" class="camera-row">
+                    <input id="camera-file-input" type="file" accept="video/*" />
+                </div>
+
+                <div id="camera-source-url-wrap" class="camera-row" style="display:none;">
+                    <input id="camera-url-input" type="text" placeholder="https://example.com/stream.m3u8 or rtsp://..." />
+                    <button id="load-camera-url-btn" class="secondary" type="button">Load URL</button>
+                </div>
+
+                <div class="camera-grid-3">
+                    <div>
+                        <label for="camera-road-select">1) Select Road</label>
+                        <select id="camera-road-select"></select>
+                    </div>
+                    <div class="camera-row" style="align-items:flex-end;">
+                        <button id="link-road-btn" class="secondary" type="button">Link Road To Camera</button>
+                    </div>
+                    <div class="camera-row" style="align-items:flex-end;">
+                        <button id="capture-frame-btn" class="warn" type="button">2) Recapture Frame</button>
+                    </div>
+                </div>
+
+                <div id="linked-roads-wrap" class="camera-row"></div>
+
+                <div class="camera-canvas-wrap">
+                    <video id="camera-preview-video" controls playsinline></video>
+                    <img id="camera-preview-image" alt="Captured frame preview" style="display:none;" />
+                    <canvas id="camera-draw-canvas"></canvas>
+                </div>
+
+                <div class="camera-row">
+                    <span class="camera-note">3) Draw selected road on captured frame (auto-captured on load). Left click adds point, right click removes last point.</span>
+                    <button id="save-camera-stage-btn" class="dark" type="button">Save Camera Setup</button>
+                    <button id="save-road-drawing-btn" type="button">Save Drawing</button>
+                    <button id="clear-road-drawing-btn" class="secondary" type="button">Clear Selected Road Drawing</button>
+                    <button id="export-camera-config-btn" class="dark" type="button">Export Camera Config</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="netedit.js"></script>
+</body>
+</html>

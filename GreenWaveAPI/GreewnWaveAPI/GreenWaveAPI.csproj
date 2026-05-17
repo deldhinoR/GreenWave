@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="MediatR" Version="8.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeeenWaveAPI.Application\GreenWaveAPI.Application.csproj" />
+    <ProjectReference Include="..\GreenWaveAPI.Infrastructure\GreenWaveAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\GreenWaveAPI.Mapper\GreenWaveAPI.Mapper.csproj" />
+  </ItemGroup>
+
+</Project>
