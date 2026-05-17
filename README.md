@@ -14,7 +14,7 @@ The main goal of GreenWave is to explore how adaptive traffic control can reduce
 
 This project is the term project of:
 
-- Müslüm Türker Kırtız
+- Müslüm Türker Kırtız 
 - Yaren Atılgan
 - Münevver Zeynep Çorumluoğlu
 - Tuana Korkmazyurek
